@@ -48,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
                 if (snapshot.hasData) {
                   WeatherModel? h1 = snapshot.data;
-                  return Stack(
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
                         height: 80,
@@ -181,9 +182,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Column(
                         children: [
-                          SizedBox(
-                            height: 240,
-                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.end,
@@ -244,133 +242,130 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-                      Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Container(
-                          height: 200,
-                          width: double.infinity,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 10,
-                                width: double.infinity,
+                      Container(
+                        height: 200,
+                        width: double.infinity,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 10,
+                              width: double.infinity,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                children: [
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.air,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "${(h1.wind!.speed)!.toStringAsFixed(1)} km/h",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          "Wind",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.water_drop_rounded,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "${(h1.main!.humidity)!.toStringAsFixed(0)} %",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          "Humidity",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.cloud_queue_outlined,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(height: 5),
+                                        Text(
+                                          "${(100 - h1.clouds!.all!).toStringAsFixed(0)} %",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        SizedBox(height: 2),
+                                        Text(
+                                          "Chance of rain",
+                                          style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Visibility - ${h1.visibility} m",
+                              style: TextStyle(
                                 color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
                               ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Column(
-                                        children: [
-                                          Icon(
-                                            Icons.air,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            "${(h1.wind!.speed)!.toStringAsFixed(1)} km/h",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(height: 2),
-                                          Text(
-                                            "Wind",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        children: [
-                                          Icon(
-                                            Icons.water_drop_rounded,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            "${(h1.main!.humidity)!.toStringAsFixed(0)} %",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(height: 2),
-                                          Text(
-                                            "Humidity",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Column(
-                                        children: [
-                                          Icon(
-                                            Icons.cloud_queue_outlined,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(height: 5),
-                                          Text(
-                                            "${(100 - h1.clouds!.all!).toStringAsFixed(0)} %",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                          SizedBox(height: 2),
-                                          Text(
-                                            "Chance of rain",
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              Text(
-                                "Visibility - ${h1.visibility} m",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              SizedBox(
-                                height: 15,
-                              ),
-                              Container(
-                                height: 10,
-                                width: double.infinity,
-                                color: Colors.white,
-                              ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Container(
+                              height: 10,
+                              width: double.infinity,
+                              color: Colors.white,
+                            ),
+                          ],
                         ),
                       ),
                     ],
